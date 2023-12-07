@@ -1,12 +1,43 @@
 package ru.naumkin.homeworks.homework3;
 
+import java.util.Scanner;
+
 public class Main {
     public static void main(String[] args) {
-        greeting();
-        checkSign(-4, 4, 3);
-        selectColor();
-        compareNumbers();
-        addOrSubtractAndPrint(4, 6, false);
+
+        int methodNumber;
+
+        do {
+            Scanner scanner = new Scanner(System.in);
+            System.out.print("Введите целое число от 1 до 5:");
+            methodNumber = scanner.nextInt();
+        } while (methodNumber < 1 || methodNumber > 5);
+
+        if (methodNumber == 1) {
+            greeting();
+        }
+
+        if (methodNumber == 2) {
+            int a = (int) (Math.random() * 10);
+            int b = (int) (Math.random() * 10);
+            int c = (int) (Math.random() * 10);
+
+            checkSign(a, b, c);
+        }
+
+        if (methodNumber == 3) {
+            selectColor();
+        }
+
+        if (methodNumber == 4) {
+            compareNumbers();
+        }
+
+        if (methodNumber == 5) {
+            int a = (int) (Math.random() * 10);
+            int b = (int) (Math.random() * 10);
+            addOrSubtractAndPrint(a, b, false);
+        }
     }
 
     public static void greeting() {

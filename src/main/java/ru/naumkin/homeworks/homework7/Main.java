@@ -15,10 +15,7 @@ public class Main {
         zeroDiagonalElements(createArrayAndPrint(10, 10, true));
 
         System.out.println(sumElementsOfSecondRow(createArrayAndPrint(1, 3, true)));
-        int[][] arr2 = {
-                {1, 2, 3},
-        };
-        System.out.println(sumElementsOfSecondRow(arr2));
+
     }
 
 

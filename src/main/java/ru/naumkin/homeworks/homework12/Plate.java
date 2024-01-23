@@ -9,30 +9,32 @@ public class Plate {
         this.currentAmountFood = maxAmountFood;
     }
 
-    public int getCurrentAmountFood() {
-        return currentAmountFood;
-    }
-
     public void addFood(int amountFood) {
+        if (amountFood < 0) {
+            System.out.println("Нельзя добавить отрицательное количество еды");
+            return;
+        }
         if (currentAmountFood == maxAmountFood) {
             System.out.println("Тарелка и так заполнена на максимум");
             return;
         }
-
         if (currentAmountFood + amountFood >= maxAmountFood) {
             currentAmountFood = maxAmountFood;
             System.out.println("Вы заполнили тарелку полностью");
             return;
         }
-
         currentAmountFood += amountFood;
         System.out.println("Вы добавили еды в тарелку,но она не заполнена на максимум");
     }
 
     public boolean decreaseFood(int amount) {
-        if (currentAmountFood - amount <= 0) {
+        if (currentAmountFood - amount == 0) {
             currentAmountFood = 0;
             System.out.println("Еды на тарелке не осталось");
+            return false;
+        }
+        if (currentAmountFood - amount < 0) {
+            System.out.println("Еды в тарелке не хватает для полной сытости ,кот не будет есть");
             return false;
         }
         currentAmountFood -= amount;

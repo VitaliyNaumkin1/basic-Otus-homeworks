@@ -1,13 +1,15 @@
 package ru.naumkin.homeworks.homework12;
 
 public class Cat {
-    private String name;
+    private final String name;
+    private final int maxAppetite;
     private int appetite;
     private boolean satiety;
 
     public Cat(String name, int appetite) {
         this.name = name;
         this.satiety = false;
+        this.maxAppetite = 100;
 
         if (appetite > 100) {
             this.appetite = 100;
@@ -19,15 +21,14 @@ public class Cat {
     }
 
     public void eat(Plate plate) {
-        int remainingAppetite = 100 - appetite;
-        if (plate.getCurrentAmountFood() < remainingAppetite) {
-            System.out.println("Слишком мало еды в тарелке для " + name);
+        int remainingAppetite = maxAppetite - appetite;
+        if (plate.decreaseFood(remainingAppetite)) {
+            appetite = maxAppetite;
+            satiety = true;
+            System.out.println(name + " покушал из тарелки");
             return;
         }
-        plate.decreaseFood(remainingAppetite);
-        appetite = 100;
-        satiety = true;
-        System.out.println(name + " покушал из тарелки");
+        System.out.println("Слишком мало еды в тарелке для " + name);
     }
 
     public void info() {

@@ -1,4 +1,4 @@
-package ru.naumkin.homeworks.homework17.myStack;
+package ru.naumkin.homeworks.homework17.mystack;
 
 public class StackMain {
     public static void main(String[] args) {

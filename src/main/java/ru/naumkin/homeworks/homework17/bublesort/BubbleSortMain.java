@@ -1,4 +1,4 @@
-package ru.naumkin.homeworks.homework17.bubleSort;
+package ru.naumkin.homeworks.homework17.bublesort;
 
 import java.util.Arrays;
 

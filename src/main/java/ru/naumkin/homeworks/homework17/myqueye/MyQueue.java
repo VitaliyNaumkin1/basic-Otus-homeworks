@@ -1,4 +1,4 @@
-package ru.naumkin.homeworks.homework17.myQueye;
+package ru.naumkin.homeworks.homework17.myqueye;
 
 import ru.naumkin.homeworks.homework17.linkedList.MyLinkedList;
 

@@ -1,4 +1,4 @@
-package ru.naumkin.homeworks.homework17.myQueye;
+package ru.naumkin.homeworks.homework17.myqueye;
 
 public class QueueMain {
     public static void main(String[] args) {

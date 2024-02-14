@@ -10,7 +10,7 @@ import java.util.Scanner;
 public class Main {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
-        File dir = new File("C:\\OTUS\\basic-homeworks\\files");
+        File dir = new File("files\\");
         List<File> allFiles = getListOfFilesFromDirectory(dir.getAbsolutePath());
         printListOfFilesFromDirectory(allFiles);
 

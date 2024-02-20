@@ -1,0 +1,40 @@
+create table students(
+    student_id serial4 primary key,
+    first_name varchar(255),
+    second_name varchar(255),
+);
+
+create table answers(
+id serial4 primary key,
+text varchar(255)
+);
+
+create table questions (
+id serial4 primary key,
+text varchar(255)
+);
+
+create table tests(
+    test_id serial4 primary key,
+    test_name varchar(255)
+);
+
+create table question_to_answer(
+question_id integer references questions(id),
+answer_id integer references answers(id),
+is_correct boolean NOT NULL
+);
+
+create table test_results(
+test_id integer references Tests(test_id),
+student_id integer references students(student_id),
+question_id integer references questions(id),
+answer_id integer references answers(id),
+primary key (test_id, student_id, question_id, answer_id)
+);
+
+create table test_to_question(
+test_id integer references tests(test_id),
+question_id integer references questions(id),
+primary key (test_id, question_id)
+);

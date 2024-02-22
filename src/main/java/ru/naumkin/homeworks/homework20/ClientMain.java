@@ -13,6 +13,8 @@ public class ClientMain {
         try (Socket socket = new Socket("localhost", 8090);) {
             DataInputStream in = new DataInputStream(socket.getInputStream());
             DataOutputStream out = new DataOutputStream(socket.getOutputStream());
+            String operations = in.readUTF();
+            System.out.println(operations);
             System.out.println("Введите операцию: ");
             String operation = scanner.next();
             System.out.println("Введите первое число: ");

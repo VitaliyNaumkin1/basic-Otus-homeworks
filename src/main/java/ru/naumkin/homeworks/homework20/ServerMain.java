@@ -13,6 +13,7 @@ public class ServerMain {
             System.out.println("Client Connected");
             DataInputStream in = new DataInputStream(socket.getInputStream());
             DataOutputStream out = new DataOutputStream(socket.getOutputStream());
+            out.writeUTF("Доступные математические операции : +, - , * , /");
             String operation = in.readUTF();
             double firstNumber = in.readDouble();
             double secondNumber = in.readDouble();

@@ -1,5 +1,4 @@
-package ru.naumkin.homeworks.homework30;
-
+import ru.naumkin.homeworks.homework30.ArrayMethods;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;

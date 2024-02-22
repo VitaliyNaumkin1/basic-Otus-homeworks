@@ -5,9 +5,9 @@ import java.util.concurrent.Executors;
 
 public class Main {
     static final Object mon = new Object();
-    static boolean isMethod_A_Free = true;
-    static boolean isMethod_B_Free = false;
-    static boolean isMethod_C_Free = false;
+    private static volatile boolean isMethod_A_Free = true;
+    private static volatile boolean isMethod_B_Free = false;
+    private static volatile boolean isMethod_C_Free = false;
 
     public static void main(String[] args) {
 
@@ -23,21 +23,20 @@ public class Main {
     }
 
 
-    //ABC ABC ABC ABC ABC ABC
     public static void printA() {
         synchronized (mon) {
             while (!isMethod_A_Free) {
                 try {
                     mon.wait();
                 } catch (InterruptedException e) {
-                    throw new RuntimeException(e);
+                    Thread.currentThread().interrupt();
                 }
             }
             isMethod_A_Free = false;
             try {
                 Thread.sleep(2000);
             } catch (InterruptedException e) {
-                throw new RuntimeException(e);
+                Thread.currentThread().interrupt();
             }
             System.out.print("A");
             isMethod_B_Free = true;
@@ -52,14 +51,14 @@ public class Main {
                 try {
                     mon.wait();
                 } catch (InterruptedException e) {
-                    throw new RuntimeException(e);
+                    Thread.currentThread().interrupt();
                 }
             }
             isMethod_B_Free = false;
             try {
                 Thread.sleep(500);
             } catch (InterruptedException e) {
-                throw new RuntimeException(e);
+                Thread.currentThread().interrupt();
             }
             System.out.print("B");
             isMethod_C_Free = true;
@@ -73,14 +72,14 @@ public class Main {
                 try {
                     mon.wait();
                 } catch (InterruptedException e) {
-                    throw new RuntimeException(e);
+                    Thread.currentThread().interrupt();
                 }
             }
             isMethod_C_Free = false;
             try {
                 Thread.sleep(1000);
             } catch (InterruptedException e) {
-                throw new RuntimeException(e);
+                Thread.currentThread().interrupt();
             }
             System.out.print("C");
             isMethod_C_Free = true;

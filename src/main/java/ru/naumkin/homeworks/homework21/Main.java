@@ -17,12 +17,11 @@ public class Main {
             threads1[i] = new Thread(() -> fillArrayWithFourThreads(array2, finalRange));
             range += 25000000;
         }
-
-        for (int i = 0; i < threads1.length; i++) {
-            threads1[i].start();
+        for (Thread thread : threads1) {
+            thread.start();
         }
-        for (int i = 0; i < threads1.length; i++) {
-            threads1[i].join();
+        for (Thread thread : threads1) {
+            thread.join();
         }
         System.out.println("Время выполенния 4 потоками: " + (System.currentTimeMillis() - timeStart2));
     }

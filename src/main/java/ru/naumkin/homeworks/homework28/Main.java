@@ -1,6 +1,7 @@
 package ru.naumkin.homeworks.homework28;
 
 import java.io.*;
+import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.text.FieldPosition;
@@ -11,6 +12,13 @@ public class Main {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Список файлов:");
         File dir = new File("files\\");
+        if (!dir.exists()){
+            try {
+                Files.createDirectory(dir.toPath());
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
         printFiles(dir);
         System.out.print("Введите имя файла: ");
         String fileName = scanner.nextLine();
@@ -28,6 +36,7 @@ public class Main {
 
     private static void printFiles(File dir) {
         File[] files = dir.listFiles();
+        assert files != null;
         for (File f : files) {
             System.out.println(f.getName());
         }
